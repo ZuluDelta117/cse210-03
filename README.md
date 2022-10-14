@@ -1,5 +1,5 @@
 # Jumper
-Similar to hang-man try to guess the word one letter at a time before the skydiver hits the ground. If you guess wrong more then 3 times then it is game over. Good luck!
+Similar to hang-man try to guess the word one letter at a time before the skydiver hits the ground. If you guess wrong letter more then 3 times then it is game over. Good luck!
 
 ---
 ## Getting Started
