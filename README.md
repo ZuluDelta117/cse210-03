@@ -24,3 +24,4 @@ root                    (project root folder)
 
 ## Authors
 * Zack Doxey (zack13@byui.edu)
+* Jordan Waite (jman1819@byui.edu)
