@@ -33,8 +33,10 @@ class Director:
             self (Director): An instance of Director.
         """
         new_location = self._terminal_service.read_word("\nGuess a letter [a-z]: ")
+        # I cannot get the underscore variable to function properly (Zack D.)
         self._underscore.hide_word(new_word)
         
+    # I have not attempted to make any changes to the code below (Zack D.)
     def _do_updates(self):
         """Keeps watch on where the seeker is moving.
 
