@@ -9,6 +9,7 @@ class Guesser:
   def __init__(self):
     words = ['class', 'horse', 'basketball', 'swimmer', 'ship']
     self._word = random.choice(words)
+    # how many wrong answers they can input before game over
     tries = 4
     
   
@@ -19,6 +20,9 @@ class Guesser:
     return underscore
 
   def stages(tries):
+    """
+    Makes a list of the possible displays depending on if they get something wrong
+    """
     stages = [
       """
           X
@@ -78,7 +82,9 @@ class Guesser:
     replace the underscores with the correct letters
     """
     while not guessed and tries > 0:
-
+    # This portion of code will eventually check to see what letter they guessed and replace the underscore
+    # with the proper letter. 
+    # I do not know if the code should go here or somewhere else. Feel free to make adjustments (Zack D.)
       if guess.isalpha():
         if guess not in word:
           tries -= 1
