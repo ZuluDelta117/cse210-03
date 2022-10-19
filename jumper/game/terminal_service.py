@@ -1,3 +1,4 @@
+from game.guesser import Guesser
 class TerminalService:
     # Obviously we want to set this class up to display to the terminal - Jordan
     def read_text(self, prompt):
@@ -8,3 +9,4 @@ class TerminalService:
 
     def write_word(self, word):
         print(word)
+        print(stages(tries))

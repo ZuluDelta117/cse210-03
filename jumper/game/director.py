@@ -33,7 +33,7 @@ class Director:
             self (Director): An instance of Director.
         """
         new_location = self._terminal_service.read_word("\nGuess a letter [a-z]: ")
-        self._seeker.move_location(new_location)
+        self._underscore.hide_word(new_word)
         
     def _do_updates(self):
         """Keeps watch on where the seeker is moving.
@@ -50,6 +50,7 @@ class Director:
             self (Director): An instance of Director.
         """
         hint = self._hider.get_hint()
-        self._terminal_service.write_text(hint)
+        self._terminal_service.write_word(hint)
         if self._hider.is_found():
             self._is_playing = False
+

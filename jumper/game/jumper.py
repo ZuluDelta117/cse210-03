@@ -13,7 +13,7 @@ class Jumper:
     # really unsure about how to set this function up (Zack D.)
     words = ['class', 'horse', 'basketball', 'swimmer', 'ship']
     self._word = random.choice(words).lower()
-    
+
     
     
   def get_word(self):
@@ -22,7 +22,8 @@ class Jumper:
     """
     # Did my best to fugure out the logic of this function and the next. 
     # Feel free to make changes where needed. (Zack D.)
-    return self._word
+
+    return self._underscore
   
   
   def hide_word(self, word):
@@ -30,9 +31,9 @@ class Jumper:
     Hides the word from the guesser
     """
     length_word = len(self._word)
-    underscore = ("_" * length_word)
+    self._underscore = ("_" * length_word)
+
     
-    return underscore
 
   
     

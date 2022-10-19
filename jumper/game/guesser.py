@@ -70,4 +70,21 @@ class Guesser:
     return stages[tries]
   
   def found_letters(self):
+
     pass
+
+  def watch_guesser(self, guess):
+    """
+    replace the underscores with the correct letters
+    """
+    while not guessed and tries > 0:
+
+      if guess.isalpha():
+        if guess not in word:
+          tries -= 1
+        else:
+          break
+  
+      else:
+        print("Not a valid guess")
+
