@@ -1,12 +1,24 @@
-from game.guesser import Guesser
+
+
 class TerminalService:
     # Obviously we want to set this class up to display to the terminal - Jordan
-    def read_text(self, prompt):
-        return input(prompt)
-    
-    def read_word(self, prompt):
-        return str(input(prompt))
+    def __init__(self):
+        """
+        Create the initial guess as an empty string.
+        """
+        self.letter_guess = ""
 
-    def write_word(self, word):
-        print(word)
-        print(stages(tries))
+    def guess(self):
+        """
+        Get the user input for their guess of what a letter is in the secret word.
+        """
+        self.letter_guess = input("Guess a letter [a-z]: ").lower()
+        return (self.letter_guess)
+
+    def play_again(self):
+        """
+        Get user input for whether the player wants to play again.
+        """
+        self.play_again_choice = input("Play again [y/n]? ").lower()
+        return (self.play_again_choice)
+

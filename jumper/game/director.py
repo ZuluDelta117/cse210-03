@@ -1,3 +1,4 @@
+import random
 from game.guesser import Guesser
 from game.jumper import Jumper
 from game.terminal_service import TerminalService
@@ -6,53 +7,87 @@ from game.terminal_service import TerminalService
 class Director:
     def __init__(self):
         # Assign classes to variables/ attributes - Jordan
-        self._guesser = Guesser()
-        self._is_playing = True
-        self._jumper = Jumper()
-        self._terminal_service = TerminalService()
+        self.list_of_words = []
+        self.terminal_service = TerminalService()
+        self.guesser = Guesser()
+        self.jumper = Jumper("")
+        self.is_playing = True
 
 
+
+    def create_wordList(self):
+        """
+        establish a wordlist from which a word is chosen at random.
+        """
+        self._list_of_words = [
+            "class", "horse", "basketball", "swimmer", "ship",
+            "development", "python"
+            
+            # Jumper('class'),
+            # Jumper('horse'),
+            # Jumper('basketball'),
+            # Jumper('swimmer'),
+            # Jumper('ship'),
+            # Jumper('developement'), 
+            # Jumper('python'), 
+            # Jumper('student'), 
+            # Jumper('arguments'), 
+            # Jumper('teamwork'), 
+            # Jumper('encapsulate'), 
+            # Jumper('abstract'), 
+            # Jumper('jumper'), 
+            ]
+        word = random.choice(self._list_of_words)
+        return Jumper(word)
+    
+    
     # Copy code from the other director file over everything below still needs
     # to be edited for our file. (Zack D.)
+
     def start_game(self):
-        """Starts the game by running the main game loop.
-        
-        Args:
-            self (Director): an instance of Director.
+        """ 
+        loops until the game is won or lost 
+        and loops while the player wants to keep playing.
         """
-        while self._is_playing:
-            self._get_inputs()
-            self._do_updates()
-            self._do_outputs()
-        
+        self.jumper = self.create_wordList()
+        tries = 4
 
-    def _get_inputs(self):
-        """Moves the seeker to a new location.
+        while self.is_playing:
+            game_over = False
+            
+            while not game_over:
+                self.guesser.print_parachute(tries)
+                if tries != 0:
+                    self.jumper.show_hidden_word()
+                    guessed_correctly = self.jumper.check_guess(self.terminal_service.guess())
+                
+                    if (not guessed_correctly):
+                        tries -= 1
+                        # game_over = self.guesser.remove_parachute(0)
 
-        Args:
-            self (Director): An instance of Director.
-        """
-        new_location = self._terminal_service.read_word("\nGuess a letter [a-z]: ")
-        # I cannot get the underscore variable to function properly (Zack D.)
-        self._underscore.hide_word(new_word)
-        
-    # I have not attempted to make any changes to the code below (Zack D.)
-    def _do_updates(self):
-        """Keeps watch on where the seeker is moving.
+                elif self.guesser.remove_parachute(0) == self.guesser.remove_parachute(tries):
+                    print("\nOh no!  Your parachute is gone!\n Game Over!")
+                    self.guesser.print_parachute(0)
+                    print(f"The word was: {self.jumper.show_word()}")
+                    game_over = True
+                    print("\nThank you for playing!\n")
+                    self.is_playing = False
 
-        Args:
-            self (Director): An instance of Director.
-        """
-        self._hider.watch_seeker(self._seeker)
-        
-    def _do_outputs(self):
-        """Provides a hint for the seeker to use.
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        hint = self._hider.get_hint()
-        self._terminal_service.write_word(hint)
-        if self._hider.is_found():
-            self._is_playing = False
+                elif (self.jumper.is_word_complete()):
+                    print("\nCongratulations!  You guessed the word!\n")
+                    print(f"The word was: {self.jumper.show_word()}")
+                    # self.jumper.show_hidden_word()
+                    print()
+                    game_over = True   
+                    print("\nThank you for playing!\n")     
+                    self.is_playing = False
+                
+            
+            # play_again = self.terminal_service.play_again()
+            # if play_again == "y" and game_over:
+            #     tries = 4
+            #     self.guesser.reset_drawing()
+            #     self.jumper = random.choice(self._list_of_words)
+            # else:
+            #     print("\nThank you for playing!\n")
 
