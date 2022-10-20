@@ -1,9 +1,9 @@
-# Tried to model this file after the seeker.py file from the earlier assignment
+# Tried to model this file after the seeker.py file from the earlier assignment 
 
 class Jumper:
     """
-    The responsibility of Jumper is to keep track of the random word that the
-    jumper will be using
+    The responsibility of Jumper is to keep track and hide the random word that 
+    the jumper will be using
     """
 
 
@@ -65,6 +65,7 @@ class Jumper:
 
         position = 0
         self._word_complete = True
+        
         # Check to see if the word is found
         if guessed_correctly:
             for i in self._word_hidden:

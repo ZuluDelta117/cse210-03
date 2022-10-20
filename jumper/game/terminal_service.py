@@ -15,10 +15,11 @@ class TerminalService:
         self.letter_guess = input("Guess a letter [a-z]: ").lower()
         return (self.letter_guess)
 
-    def play_again(self):
-        """
-        Get user input for whether the player wants to play again.
-        """
-        self.play_again_choice = input("Play again [y/n]? ").lower()
-        return (self.play_again_choice)
+    # I commented this out because I cannot get the play again function to work
+    # def play_again(self):
+    #     """
+    #     Get user input for whether the player wants to play again.
+    #     """
+    #     self.play_again_choice = input("Play again [y/n]? ").lower()
+    #     return (self.play_again_choice)
 

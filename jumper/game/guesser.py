@@ -8,8 +8,9 @@ class Guesser:
   """
   def __init__(self):
     """
-    Makes a list of the possible displays depending on if they get something wrong
+    Makes a list of the possible displays depending on how many tries they have left
     """
+    # List of each possible display
     self._parachute = [
       """
           X
@@ -60,15 +61,19 @@ class Guesser:
 
 
   def print_parachute(self, tries):
-      # This method prints the parachute part of the drawing when called.
-      print(self._parachute[tries])
+    """
+    Print the correct display depending on the number of tries left
+    """
+    print(self._parachute[tries])
 
   def remove_parachute(self, tries):
-      # This method removes parts of the parachute drawing when an incorrect letter is guessed.
-      parachute_gone = False
-      # self._parachute = self._parachute[tries]
-      if self._parachute[0] == self._parachute[tries]:
-        parachute_gone = True
+    """
+    Keeps track if the parachuter has died and the player has a game over
+    """
+    parachute_gone = False
+
+    if self._parachute[0] == self._parachute[tries]:
+      parachute_gone = True
         
-      return parachute_gone
+    return parachute_gone
 
